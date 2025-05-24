@@ -13,7 +13,6 @@ public class Card {
     public Card(int id, String name, String[] tips) {
         this.id = id;
         this.name = name;
-        this.tips = new String[tips.length];
         this.tips = tips;
     }
 
