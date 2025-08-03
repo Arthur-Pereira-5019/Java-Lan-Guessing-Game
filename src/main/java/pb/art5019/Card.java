@@ -3,6 +3,7 @@ package pb.art5019;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Card {
+    public int randomizedId;
     @JsonProperty("id")
     public int id;
     @JsonProperty("name")
