@@ -33,6 +33,7 @@ public class GameController {
     private ArrayList<Card> cards = new ArrayList<>();
 
     //Conection methods
+    ServerSocket serverSocket;
     Socket socket;
     InputStream input;
     OutputStream output;
@@ -40,7 +41,6 @@ public class GameController {
 
     public void gameStartPoint() throws IOException {
         startConnection();
-        System.out.println("Connected at IP: " + socket.getLocalAddress() + "and port " + socket.getPort());
         solveCards();
 
         shuffleCards();
@@ -74,7 +74,10 @@ public class GameController {
     }
 
     public void startConnection() throws java.io.IOException {
-        socket = new Socket("127.0.0.1", 5019);
+        serverSocket = new ServerSocket(5019);
+        //TODO: Multithreading
+        System.out.println("Connected at IP: " + serverSocket.getInetAddress() + "and port " + serverSocket.getLocalPort());
+        socket = serverSocket.accept();
         input = socket.getInputStream();
         output = socket.getOutputStream();
     }
